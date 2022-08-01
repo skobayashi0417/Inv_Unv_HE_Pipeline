@@ -8,6 +8,7 @@ def generate_JSON():
     data['SlideInfo'] = {}
     data['PatchInfo'] = {}
     data['mouseModelInference'] = {}
+    data['csInference'] = {}
 
     data['directories']['INPUT_WSI_DIR'] = '/data06/shared/skobayashi/downloadVSI/Yang_Prospect2/Scan_composite_wChronic'
     data['directories']['BASE_DIR'] = '/data09/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice'
@@ -23,6 +24,7 @@ def generate_JSON():
     data['PatchInfo']['generateProbMaps'] = True
     data['mouseModelInference']['performInference'] = True
     data['mouseModelInference']['onProspectiveCohort'] = True
+    data['csInference']['onProspectiveCohort'] = True
 
     data['DEVICE'] = 0
 
