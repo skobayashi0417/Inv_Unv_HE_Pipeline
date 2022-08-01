@@ -71,7 +71,9 @@ def CS_LDA_infer(config):
     test_mice = np.array(test_df['mouse'])
 
     # Fit LDA Classifier on Archived Mouse Cohort and Predict
-    clf = LinearDiscriminantAnalysis(n_components=1)
+    clf = LinearDiscriminantAnalysis()
+    print(train_x)
+    print(train_y)
     clf.fit(train_x, train_y)
 
     y_pred = clf.predict(test_x)
