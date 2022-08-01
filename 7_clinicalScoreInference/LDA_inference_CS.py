@@ -40,11 +40,11 @@ def prospective_conditions_numEncoded(sampleNum):
         return 2
 
 def decode_cs_to_bin(CS):
-    if int(CS)<=2:
+    if int(CS)==0:
         return 'LOW'
-    elif int(CS)>2 and int(CS)<=7:
+    elif int(CS)==1:
         return 'MID'
-    elif int(CS)>7:
+    elif int(CS)==2:
         return 'HIGH'
 
 def CS_LDA_infer(config):
