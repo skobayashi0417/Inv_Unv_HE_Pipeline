@@ -62,6 +62,9 @@ def CS_LDA_infer(config):
     test_cols = [a for a in test_df.columns if str(a).endswith('percent')]
     train_cols = [a for a in train_df.columns if str(a).endswith('percent')]
     
+    # Get rid of training mice for which we have no clinical scores
+    train_df = train_df.dropna(subset=['CS_bin_0Low_1mid_2high'])
+    
     # Extract Archived Mouse Cohort Proportions and GT Labels
     train_y = np.array(train_df['CS_bin_0Low_1mid_2high'])
     train_x = np.array(train_df[train_cols])
@@ -72,8 +75,7 @@ def CS_LDA_infer(config):
 
     # Fit LDA Classifier on Archived Mouse Cohort and Predict
     clf = LinearDiscriminantAnalysis()
-    print(train_x)
-    print(train_y)
+
     clf.fit(train_x, train_y)
 
     y_pred = clf.predict(test_x)
