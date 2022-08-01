@@ -84,7 +84,7 @@ def CS_LDA_infer(config):
     if config['csInference']['onProspectiveCohort'] == True:
         # This is on the prospective cohort with our known GTs... load up their CS from csv
         cs_gt_df = pd.read_csv('./7_clinicalScoreInference/prospectiveCohort_CS_groundTruth/prospectiveMouseCohort_CS.csv')
-        merged_df = pd.merge(cs_gt_df,test_df,on='mouse')
+        merged_df = pd.merge(test_df,cs_gt_df,on='mouse')
 
         test_y = np.array(merged_df['CS_bin_0Low_1mid_2high'])
         
