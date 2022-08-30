@@ -33,3 +33,5 @@ conda install -c pytorch torchvision=0.2.2
 conda install -c conda-forge kneed=0.7.0
 
 conda install -c conda-forge matplotlib=3.2.2
+
+conda install -c conda-forge tensorboard=2.8.0

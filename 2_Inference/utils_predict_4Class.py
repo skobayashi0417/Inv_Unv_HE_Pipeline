@@ -10,6 +10,7 @@ from torchvision import transforms
 
 def get_label_from_filename(fn):
     # *_{lb}.png --> extract the label
+    ## if used for binary predictions... 1 is normal, 2 is diseased
     if int(fn[-5]) == 1: ## bg
         lb = 0
     elif int(fn[-5]) == 2: ## muscle
@@ -21,7 +22,7 @@ def get_label_from_filename(fn):
     return lb
 
 class data_loader(Dataset):
-    """
+    """ 
     Dataset to read image and label for training
     """
     def __init__(self, imgs, transform=None):

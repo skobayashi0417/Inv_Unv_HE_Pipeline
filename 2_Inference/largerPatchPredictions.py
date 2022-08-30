@@ -13,7 +13,6 @@ from torch.autograd import Variable
 import numpy as np
 import random
 from utils_predict_4Class import *
-from torch.utils.tensorboard import SummaryWriter
 from torchvision import datasets, transforms, models
 
 rand_seed = 26700
