@@ -1,6 +1,5 @@
 import numpy as np
 import pandas as pd
-from kneed import KneeLocator
 import os
 import copy
 import pickle

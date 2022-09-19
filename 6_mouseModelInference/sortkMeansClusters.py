@@ -3,7 +3,6 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 import numpy as np
 import pandas as pd
-from kneed import KneeLocator
 import os
 import copy
 import shutil
