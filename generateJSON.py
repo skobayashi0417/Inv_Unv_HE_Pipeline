@@ -11,7 +11,7 @@ def generate_JSON():
     data['csInference'] = {}
 
     data['directories']['INPUT_WSI_DIR'] = '/data06/shared/skobayashi/downloadVSI/Yang_Prospect2/Scan_composite_wChronic'
-    data['directories']['BASE_DIR'] = '/data10/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice'
+    data['directories']['BASE_DIR'] = '/data05/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice'
 
     data['SlideInfo']['WSI_EXTENSION'] = '.tif'
     data['SlideInfo']['SCALE_FACTOR'] = 8
