@@ -10,8 +10,8 @@ def generate_JSON():
     data['mouseModelInference'] = {}
     data['csInference'] = {}
 
-    data['directories']['INPUT_WSI_DIR'] = '/data06/shared/skobayashi/downloadVSI/Yang_Prospect2/Scan_composite_wChronic'
-    data['directories']['BASE_DIR'] = '/data09/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice'
+    data['directories']['INPUT_WSI_DIR'] = '/data06/shared/skobayashi/downloadVSI/Yang_Prospect2/Scan_composite_wChronic_reLabeled'
+    data['directories']['BASE_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled''
 
     data['SlideInfo']['WSI_EXTENSION'] = '.tif'
     data['SlideInfo']['SCALE_FACTOR'] = 8
