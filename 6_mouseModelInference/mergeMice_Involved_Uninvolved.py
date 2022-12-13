@@ -8,7 +8,7 @@ import csv
 
 def aggregate_to_directory(OVERLAP_PATCHES_DIR,DEST_PATCHES_DIR,df):
     for index,row in df.iterrows():
-        sample = str(('_').join(str(row[4][1:]).split('_')[0:3]))
+        sample = str(('_').join(str(row[4][1:]).split('_')[0:4]))
         fn = str(row[4][1:])
 
         src = os.path.join(os.path.join(OVERLAP_PATCHES_DIR,sample),fn)
@@ -50,6 +50,7 @@ def merge_csvs(DEST_DIR,PRED_DIR, target):
 
 def mergeMice(config):
     BASE_DIR = config['directories']['BASE_DIR']
+    print(BASE_DIR)
     
     PRED_DIR = os.path.join(BASE_DIR,'predictions_wOverlaps')
     
@@ -70,6 +71,8 @@ def mergeMice(config):
 
     involved_df = merge_csvs(DEST_DIR,PRED_DIR,'Involved')
     uninvolved_df = merge_csvs(DEST_DIR,PRED_DIR,'Uninvolved')
+    
+    print(INVOLVED_PATCHES_DIR)
     
     aggregate_to_directory(OVERLAP_PATCHES_DIR,INVOLVED_PATCHES_DIR,involved_df)
     aggregate_to_directory(OVERLAP_PATCHES_DIR,UNINVOLVED_PATCHES_DIR,uninvolved_df)
