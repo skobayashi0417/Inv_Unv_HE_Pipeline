@@ -87,23 +87,25 @@ def runPipeline(config):
     if config['mouseModelInference']['performInference'] == True:
         assert config['PatchInfo']['PREDICT_OVERLAPS'] == True, "Overlap Predictions Must Be Performed."
         
-        
+        config['directories']['KMEANS_OUTPUT_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled/kMeans_Outputs'
+        config['directories']['GEN_PATCHES_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled/Involved_UninvolvedPatches'
+        config['directories']['INVOLVED_PATCHES_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled/Involved_UninvolvedPatches/involvedPatches_wOverlaps'
 
         ### Gather Involved and Uninvolved Patches...
         print('Gathering Involved and Uninvolved Patches...')
-        config = mergeMice(config)
+        #config = mergeMice(config)
         
         ### Perform RN Feature Extraction
         print('Performing RN Feature Extraction on Involved Patches...')
-        config = RN_FeatureExtraction(config)
+        #config = RN_FeatureExtraction(config)
         
         ### Perform PCA
         print('Conducting PCA on Involved Patches...')
-        config = performPCA(config)
+        #config = performPCA(config)
 
         ### Perform kMeans
         print('performing kMeans on Involved Patches...')
-        config = kMeansPCA(config)
+        #config = kMeansPCA(config)
 
         ### Merge InvolvedUninvolved Counts
         print('Merging Involved and Uninvolved Counts...')
