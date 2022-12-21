@@ -8,7 +8,7 @@ def extract_sampleID_UNInvolved(fn):
     return sampleID
 
 def extract_sampleID(fn):
-    sampleID = str(fn).split('-')[0]
+    sampleID = str(fn).split('_')[0]
     return sampleID
 
 def mergeCounts(config):
