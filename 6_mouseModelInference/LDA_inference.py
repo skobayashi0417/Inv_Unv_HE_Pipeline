@@ -82,8 +82,10 @@ def LDA_infer(config):
     
     if config['mouseModelInference']['onProspectiveCohort'] == True:
         # This is on the prospective cohort with our known GTs... load up their labels
+        print(test_df.head)
         test_df['condition_string'] = test_df['mouse'].map(prospective_conditions)
         test_df['condition'] = test_df['mouse'].map(prospective_conditions_numEncoded)
+        print(test_df.head)
         test_y = np.array(test_df['condition'])
         
         save_fn = "prospectiveCohort_LDA_summary.txt"
