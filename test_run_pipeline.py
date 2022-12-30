@@ -106,6 +106,8 @@ def runPipeline(config):
         config['directories']['KMEANS_OUTPUT_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled/kMeans_Outputs'
         
         config['directories']['GEN_PATCHES_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled/Involved_UninvolvedPatches'
+        
+        config['directories']['INVOLVED_PATCHES_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled/Involved_UninvolvedPatches/involvedPatches_wOverlaps'
 
         ### Merge InvolvedUninvolved Counts
         print('Merging Involved and Uninvolved Counts...')
