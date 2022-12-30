@@ -86,6 +86,7 @@ def LDA_infer(config):
         test_df['condition_string'] = test_df['mouse'].map(prospective_conditions)
         test_df['condition'] = test_df['mouse'].map(prospective_conditions_numEncoded)
         print(test_df.head)
+        print(test_df['mouse'][0:10])
         test_y = np.array(test_df['condition'])
         
         save_fn = "prospectiveCohort_LDA_summary.txt"
