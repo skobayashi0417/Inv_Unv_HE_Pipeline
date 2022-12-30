@@ -4,7 +4,7 @@ import numpy as np
 import csv
 
 def extract_sampleID_UNInvolved(fn):
-    sampleID = str(fn)[1:].split('-')[0]
+    sampleID = str(fn)[1:].split('_')[0]
     return sampleID
 
 def extract_sampleID(fn):
