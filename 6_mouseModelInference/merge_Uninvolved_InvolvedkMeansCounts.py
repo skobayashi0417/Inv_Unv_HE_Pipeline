@@ -35,7 +35,7 @@ def mergeCounts(config):
     
     for sample in samples:
         # start mouseTracker
-        sampleTracker = [sample]
+        sampleTracker = [str(sample)]
     
         # log number of uninvolved patches
         sampleTracker.append(len(UNinvolved_df[UNinvolved_df['sample']==str(sample)]))
