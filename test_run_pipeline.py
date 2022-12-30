@@ -104,6 +104,8 @@ def runPipeline(config):
      #   config = kMeansPCA(config)
      
         config['directories']['KMEANS_OUTPUT_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled/kMeans_Outputs'
+        
+        config['directories']['GEN_PATCHES_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled/Involved_UninvolvedPatches'
 
         ### Merge InvolvedUninvolved Counts
         print('Merging Involved and Uninvolved Counts...')
@@ -113,7 +115,6 @@ def runPipeline(config):
         print('Generating Uninvolved and Involved k-mean Class Proportions...')
         config = generateProps(config)
         
-        config['directories']['GEN_PATCHES_DIR'] = '/data03/shared/skobayashi/YANGPROSPECTIVE_fullPipeline_allMice_InvUnvPipeline_reLabeled/Involved_UninvolvedPatches'
         ### Perform Mouse Model Inference
         print('Performing LDA mouse model inference...')
         config = LDA_infer(config)
