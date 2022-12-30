@@ -9,9 +9,9 @@ from sklearn.metrics import f1_score
 
 def prospective_conditions(sampleNum):
     # ground truths
-    CTRL = ['ND09','ND16','ND17','ND20','ND21','ND24','ND27','ND28']
-    TAM = ['ND14','ND15','ND22','ND23','ND30']
-    DSS = ['621','622','ND10','ND18','ND19','ND25','ND26','ND29']
+    CTRL = ['45','602','603','562','563','44','505','506']
+    TAM = ['600','601','42','43','296']
+    DSS = ['621','622','24','560','561','7','504','294']
     COMBO = ['595','610','611']
     
     if sampleNum in CTRL:
@@ -25,9 +25,9 @@ def prospective_conditions(sampleNum):
 
 def prospective_conditions_numEncoded(sampleNum):
     # ground truths
-    CTRL = ['ND09','ND16','ND17','ND20','ND21','ND24','ND27','ND28']
-    TAM = ['ND14','ND15','ND22','ND23','ND30']
-    DSS = ['621','622','ND10','ND18','ND19','ND25','ND26','ND29']
+    CTRL = ['45','602','603','562','563','44','505','506']
+    TAM = ['600','601','42','43','296']
+    DSS = ['621','622','24','560','561','7','504','294']
     COMBO = ['595','610','611']
     
     if sampleNum in CTRL:
