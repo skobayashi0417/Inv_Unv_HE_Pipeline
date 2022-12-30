@@ -15,13 +15,13 @@ def prospective_conditions(sampleNum):
     DSS = ['621','622','24','560','561','7','504','294']
     COMBO = ['595','610','611']
     
-    if sampleNum in CTRL:
+    if str(sampleNum) in CTRL:
         return 'Ctrl'
-    elif sampleNum in TAM:
+    elif str(sampleNum) in TAM:
         return 'TAM_colitis'
-    elif sampleNum in DSS:
+    elif str(sampleNum) in DSS:
         return 'DSS_colitis'
-    elif sampleNum in COMBO:
+    elif str(sampleNum) in COMBO:
         return 'Combined_Induction'
 
 def prospective_conditions_numEncoded(sampleNum):
@@ -31,13 +31,13 @@ def prospective_conditions_numEncoded(sampleNum):
     DSS = ['621','622','24','560','561','7','504','294']
     COMBO = ['595','610','611']
     
-    if sampleNum in CTRL:
+    if str(sampleNum) in CTRL:
         return 3
-    elif sampleNum in TAM:
+    elif str(sampleNum) in TAM:
         return 0
-    elif sampleNum in DSS:
+    elif str(sampleNum) in DSS:
         return 1
-    elif sampleNum in COMBO:
+    elif str(sampleNum) in COMBO:
         return 2
 
 def decode_conditions(cond):
