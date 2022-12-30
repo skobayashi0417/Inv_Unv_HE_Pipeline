@@ -33,7 +33,7 @@ def generateProps(config):
             test_df[newColName] = test_df.apply(lambda x: return_proportion(clusterCount=x[col],totalCount=x['totalCount']),axis=1)
     
 
-    test_df.to_csv(os.path.join(config['directories']['GEN_PATCHES_DIR'],'invUninvolvedPatchCounts_test_wProps.csv'))
+    test_df.to_csv(os.path.join(config['directories']['GEN_PATCHES_DIR'],'invUninvolvedPatchCounts_test_wProps.csv'),index=False)
     
     
     

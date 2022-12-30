@@ -89,6 +89,11 @@ def LDA_infer(config):
         save_fn = "prospectiveCohort_LDA_summary.txt"
         summaryFilePath = os.path.join(save_dir,save_fn)
         writeSummary = open(summaryFilePath, 'w')
+        print('CHECK')
+        print(y_pred[0:15])
+        print(test_y[0:15])
+        print('ENDCHECK')
+        
         writeSummary.write('test_accuracy is: ' + str(accuracy_score(test_y, y_pred)) + '\n')
         writeSummary.write('f1 is: ' + str(f1_score(test_y, y_pred,average='macro')) + '\n')
         writeSummary.write('conf_matrix is: ' + '\n' + str(confusion_matrix(test_y, y_pred)) + '\n')
