@@ -1,4 +1,1 @@
-/2_Inference/smallPatch_model/smallPatch_chkpt.t7
-/2_Inference/model/resnet34_chkpt.t7
-/6_mouseModelInference/archivedMouseCohort_Proportions/archivedMouseCohort.csv
 /6_mouseModelInference/archivedMouseCohort_InvolvedPatches_RN_extracted_features/involved_wOverlap_RN_extractedFeatures_archivedMouseCohort.csv
