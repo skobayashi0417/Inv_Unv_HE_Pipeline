@@ -8,7 +8,7 @@ import csv
 
 def aggregate_to_directory(OVERLAP_PATCHES_DIR,DEST_PATCHES_DIR,df):
     for index,row in df.iterrows():
-        sample = str(('_').join(str(row[4][1:]).split('_')[0:4]))
+        sample = str(('_').join(str(row[4][1:]).split('_')[0:-8]))
         fn = str(row[4][1:])
 
         src = os.path.join(os.path.join(OVERLAP_PATCHES_DIR,sample),fn)
