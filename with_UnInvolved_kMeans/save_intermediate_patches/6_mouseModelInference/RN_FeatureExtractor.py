@@ -68,14 +68,14 @@ def string_noBrackets(x):
     x = x.replace(']','')
     return x
 
-def test_fn_epoch(model, criterion, test_loader):
+def test_fn_epoch(model, criterion, test_loader, patchInvUninv):
     global dest_dir
 
     model.eval()
     nline = 0
     running_loss = 0.0
     
-    save_all = os.path.join(dest_dir,'involved_wOverlap_RN_extractedFeatures.csv')
+    save_all = os.path.join(dest_dir, patchInvUninv + '_wOverlap_RN_extractedFeatures.csv')
     a = open(save_all,"w")
 
     with torch.no_grad():
@@ -89,7 +89,7 @@ def test_fn_epoch(model, criterion, test_loader):
                 for x in zip(fn,map(string_noBrackets,toSaveOutputs.tolist()))
                 ]) + '\n')
                 
-def run_predictions(runinfo,test_loader):
+def run_predictions(runinfo,test_loader,patchInvUninv):
     global model
     global classes
     #global runNumber
@@ -106,7 +106,7 @@ def run_predictions(runinfo,test_loader):
     criterion = nn.CrossEntropyLoss().to(device)
     start = time.time()
 
-    test_fn_epoch(model=model, criterion=criterion, test_loader = test_loader)
+    test_fn_epoch(model=model, criterion=criterion, test_loader = test_loader, patchInvUninv = patchInvUninv)
  
 def extract_top_model(checkpointPath):
     checkpoint = [a for a in os.listdir(checkpointPath) if a.endswith('.t7')][0]
@@ -123,6 +123,9 @@ def RN_FeatureExtraction(config):
     
     BASE_DIR = config['directories']['BASE_DIR']
     CHECKPOINT_DIR = './2_Inference/model/'
+    
+    #Involved Patches first
+    print('On Involved patches...')
     
     dest_dir = os.path.join(BASE_DIR,'involved_patch_RN_FeatureExtraction')
     if not os.path.exists(dest_dir):
@@ -144,6 +147,31 @@ def RN_FeatureExtraction(config):
     img_test = [f for f in glob.glob(os.path.join(testSource, '*png'))]
     test_set = data_loader(img_test, transform=data_transforms['test'])
     test_loader = DataLoader(test_set, batch_size = 32, num_workers = 8 )
-    run_predictions(runinfo = run_info[0], test_loader = test_loader)
+    run_predictions(runinfo = run_info[0], test_loader = test_loader, patchInvUninv = 'involved')
+    
+    #UNinvolved Patches next
+    print('On UNinvolved patches...')
+    
+    dest_dir = os.path.join(BASE_DIR,'UNinvolved_patch_RN_FeatureExtraction')
+    if not os.path.exists(dest_dir):
+        os.mkdir(dest_dir)
+    
+    config['directories']['UNINVOLVED_RN_EXTRACTED_FEATURES_DIR'] = dest_dir
+    
+    meansandstd = [[0.7480, 0.6054, 0.7506],[0.1190, 0.1661, 0.0663]]
+    
+    mean = torch.tensor(meansandstd[0], dtype=torch.float32)
+    std = torch.tensor(meansandstd[1], dtype=torch.float32)
+    
+    run_info = [[32,1,'',extract_top_model(CHECKPOINT_DIR)]]
+    data_transforms = get_data_transforms(mean, std)
+        
+    timestr = time.strftime("%Y%m%d-%H%M%S")
+    testSource = config['directories']['UNINVOLVED_PATCHES_DIR']
+            
+    img_test = [f for f in glob.glob(os.path.join(testSource, '*png'))]
+    test_set = data_loader(img_test, transform=data_transforms['test'])
+    test_loader = DataLoader(test_set, batch_size = 32, num_workers = 8 )
+    run_predictions(runinfo = run_info[0], test_loader = test_loader, patchInvUninv = 'UNinvolved')
     
     return config

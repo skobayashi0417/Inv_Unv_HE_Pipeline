@@ -17,7 +17,7 @@ def mergeCounts(config):
     KMEANS_DIR = config['directories']['KMEANS_OUTPUT_DIR']
     
     # load involved df
-    involved_df = pd.read_csv(os.path.join(KMEANS_DIR,[a for a in os.listdir(KMEANS_DIR) if a.endswith('test.csv')][0]), header=None)
+    involved_df = pd.read_csv(os.path.join(KMEANS_DIR,[a for a in os.listdir(KMEANS_DIR) if a.endswith('_involvedwOverlaps_test.csv')][0]), header=None)
     involved_df.columns = ['fn','Cluster']
     involved_df['sample'] = involved_df['fn'].map(extract_sampleID)
     

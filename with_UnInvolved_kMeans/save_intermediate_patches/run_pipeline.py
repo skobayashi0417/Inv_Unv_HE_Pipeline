@@ -92,15 +92,15 @@ def runPipeline(config):
         config = mergeMice(config)
         
         ### Perform RN Feature Extraction
-        print('Performing RN Feature Extraction on Involved Patches...')
+        print('Performing RN Feature Extraction on Involved and UNInvolved Patches...')
         config = RN_FeatureExtraction(config)
         
         ### Perform PCA
-        print('Conducting PCA on Involved Patches...')
+        print('Conducting PCA on Involved and UNInvolved Patches...')
         config = performPCA(config)
 
         ### Perform kMeans
-        print('performing kMeans on Involved Patches...')
+        print('performing kMeans on Involved and UNInvolved Patches...')
         config = kMeansPCA(config)
 
         ### Merge InvolvedUninvolved Counts

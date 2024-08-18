@@ -44,10 +44,14 @@ def performPCA(config):
     
     config['directories']['PCA_OUTPUTS_DIR'] = save_dir
     
+    #Involved Patches First
+    print('On Involved PCA...')
+    
     INVOLVED_RN_FEATURES_DIR = config['directories']['INVOLVED_RN_EXTRACTED_FEATURES_DIR']
+    home_dir = ('/').join(str(os.getcwd()).split('/')[0:-3])
     
     # Path to archived mouse cohort to fit PCA on
-    PCA_TRAIN_CSV = './6_mouseModelInference/archivedMouseCohort_InvolvedPatches_RN_extracted_features/involved_wOverlap_RN_extractedFeatures_archivedMouseCohort.csv'
+    PCA_TRAIN_CSV = home_dir + '/6_mouseModelInference/archivedMouseCohort_InvolvedPatches_RN_extracted_features/involved_wOverlap_RN_extractedFeatures_archivedMouseCohort.csv'
     PCA_OPT_NUM_COMPONENTS = 250 ## determined on archived mouse cohort
     scaler = MinMaxScaler()
     scaler_test = MinMaxScaler()
@@ -87,6 +91,56 @@ def performPCA(config):
     principalDF_test['fns'] = test_fns
         
     saveName_test = 'PCA_'+ 'propectiveCohort_variance_testData.csv'
+    principalDF_test.to_csv(os.path.join(save_dir,saveName_test),index=False)
+    
+    #UNinvolved Patches Next
+    print('On UNinvolved PCA...')
+    
+    UNINVOLVED_RN_FEATURES_DIR = config['directories']['UNINVOLVED_RN_EXTRACTED_FEATURES_DIR']
+    home_dir = ('/').join(str(os.getcwd()).split('/')[0:-3])
+    
+    # Path to archived mouse cohort to fit PCA on
+    #PCA_TRAIN_CSV = home_dir + '/6_mouseModelInference/archivedMouseCohort_UNinvolvedPatches_RN_extracted_features/UNinvolved_wOverlap_RN_extractedFeatures_archivedMouseCohort.csv'
+    PCA_TRAIN_CSV = '/data06/shared/skobayashi/kMeansonlyHealthy_RN34_Outputs_single/UNinvolved_patch_RN_FeatureExtraction/UNinvolved_wOverlap_RN_extractedFeatures_archivedMouseCohort.csv'
+    PCA_OPT_NUM_COMPONENTS = 255 ## determined on archived mouse cohort
+    scaler = MinMaxScaler()
+    scaler_test = MinMaxScaler()
+    
+    # Inference cohort RN extracted features from earlier in pipeline
+    test_csv = pd.read_csv(os.path.join(UNINVOLVED_RN_FEATURES_DIR,'UNinvolved_wOverlap_RN_extractedFeatures.csv'),header=None)
+    test_fns = list(test_csv[0])
+
+    test_df = test_csv.drop([0],axis=1)
+
+    rescaled_test_data = scaler_test.fit_transform(test_df)
+    
+    train_df = pd.read_csv(PCA_TRAIN_CSV,header=None)
+    fns = list(train_df[0])
+    train_df = train_df.drop([0,1,2],axis=1)
+        
+    rescaled_data = scaler.fit_transform(train_df)
+        
+    #initialize PCA separately on test and training data (for checking)
+    pca = PCA(n_components=PCA_OPT_NUM_COMPONENTS)
+    pca_test = PCA(n_components=PCA_OPT_NUM_COMPONENTS)
+        
+    # fit pca_test on training data
+    pca_test.fit(rescaled_data)
+        
+    # transform test data
+    PCs_test = pca_test.transform(rescaled_test_data)
+        
+    # save test data PCs
+    writeVariance_test = open('PCAVariance_' + 'prospectiveCohort_testData_UNinv.txt', 'w')
+    writeVariance_test.write(str(pca_test.explained_variance_ratio_))
+    writeVariance_test.close()
+        
+    cols = ['PC'+str(a) for a in list(range(0,PCA_OPT_NUM_COMPONENTS))]
+        
+    principalDF_test = pd.DataFrame(data = PCs_test, columns = cols)
+    principalDF_test['fns'] = test_fns
+        
+    saveName_test = 'PCA_'+ 'propectiveCohort_variance_testData_UNinv.csv'
     principalDF_test.to_csv(os.path.join(save_dir,saveName_test),index=False)
         
     return config
