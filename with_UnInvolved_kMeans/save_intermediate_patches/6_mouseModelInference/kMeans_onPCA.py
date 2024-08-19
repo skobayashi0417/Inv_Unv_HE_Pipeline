@@ -14,7 +14,7 @@ from sklearn.metrics import silhouette_score
 def kMeansPCA(config):
     BASE_DIR = config['directories']['BASE_DIR']
     PCA_DIR = config['directories']['PCA_OUTPUTS_DIR']
-    home_dir = ('/').join(str(os.getcwd()).split('/')[0:-3])
+    home_dir = ('/').join(str(os.getcwd()).split('/')[0:-2])
     
     saveDir = os.path.join(BASE_DIR,'kMeans_Outputs')
     

@@ -48,7 +48,7 @@ def performPCA(config):
     print('On Involved PCA...')
     
     INVOLVED_RN_FEATURES_DIR = config['directories']['INVOLVED_RN_EXTRACTED_FEATURES_DIR']
-    home_dir = ('/').join(str(os.getcwd()).split('/')[0:-3])
+    home_dir = ('/').join(str(os.getcwd()).split('/')[0:-2])
     
     # Path to archived mouse cohort to fit PCA on
     PCA_TRAIN_CSV = home_dir + '/6_mouseModelInference/archivedMouseCohort_InvolvedPatches_RN_extracted_features/involved_wOverlap_RN_extractedFeatures_archivedMouseCohort.csv'
@@ -97,7 +97,7 @@ def performPCA(config):
     print('On UNinvolved PCA...')
     
     UNINVOLVED_RN_FEATURES_DIR = config['directories']['UNINVOLVED_RN_EXTRACTED_FEATURES_DIR']
-    home_dir = ('/').join(str(os.getcwd()).split('/')[0:-3])
+    home_dir = ('/').join(str(os.getcwd()).split('/')[0:-2])
     
     # Path to archived mouse cohort to fit PCA on
     #PCA_TRAIN_CSV = home_dir + '/6_mouseModelInference/archivedMouseCohort_UNinvolvedPatches_RN_extracted_features/UNinvolved_wOverlap_RN_extractedFeatures_archivedMouseCohort.csv'
