@@ -23,8 +23,8 @@ def generate_JSON():
     data['PatchInfo']['PREDICT_OVERLAPS'] = True
     data['PatchInfo']['generateProbMaps'] = True
     data['mouseModelInference']['performInference'] = True
-    data['mouseModelInference']['onProspectiveCohort'] = True
-    data['csInference']['onProspectiveCohort'] = True
+    data['mouseModelInference']['onProspectiveCohort'] = False
+    data['csInference']['onProspectiveCohort'] = False
 
     data['DEVICE'] = 0
 
