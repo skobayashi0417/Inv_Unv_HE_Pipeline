@@ -52,9 +52,11 @@ def CS_LDA_infer(config):
     save_dir = os.path.join(BASE_DIR,'LDA_Predictions')
     if not os.path.exists(save_dir):
         os.mkdir(save_dir)
+        
+    home_dir = ('/').join(str(os.getcwd()).split('/')[0:-2])
 
     # Load up DFs
-    train_df = pd.read_csv('./6_mouseModelInference/archivedMouseCohort_Proportions/archivedMouseCohort.csv')
+    train_df = pd.read_csv(home_dir + '/6_mouseModelInference/archivedMouseCohort_Proportions/archivedMouseCohort.csv')
     
     test_df = pd.read_csv(os.path.join(config['directories']['GEN_PATCHES_DIR'],'invUninvolvedPatchCounts_test_wProps.csv'))
 
