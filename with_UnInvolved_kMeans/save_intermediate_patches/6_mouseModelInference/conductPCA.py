@@ -101,7 +101,7 @@ def performPCA(config):
     
     # Path to archived mouse cohort to fit PCA on
     #PCA_TRAIN_CSV = home_dir + '/6_mouseModelInference/archivedMouseCohort_UNinvolvedPatches_RN_extracted_features/UNinvolved_wOverlap_RN_extractedFeatures_archivedMouseCohort.csv'
-    PCA_TRAIN_CSV = '/data06/shared/skobayashi/kMeansonlyHealthy_RN34_Outputs_single/UNinvolved_patch_RN_FeatureExtraction/UNinvolved_wOverlap_RN_extractedFeatures_archivedMouseCohort.csv'
+    PCA_TRAIN_CSV = '/data06/shared/skobayashi/kMeansonlyHealthy_RN34_Outputs_single/UNinvolved_patch_RN_FeatureExtraction/UNinvolved_wOverlap_RN_extractedFeatures.csv'
     PCA_OPT_NUM_COMPONENTS = 255 ## determined on archived mouse cohort
     scaler = MinMaxScaler()
     scaler_test = MinMaxScaler()
