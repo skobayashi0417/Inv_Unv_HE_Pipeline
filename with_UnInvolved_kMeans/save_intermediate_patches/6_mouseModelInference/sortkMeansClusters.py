@@ -61,7 +61,7 @@ def sortClusters(config):
         df['sample'] = df['fn'].map(extract_sampleID)
         
         clusters = list(set(list(df['Cluster'])))
-        num_k = 4
+        num_k = 3
         
         spec_dest = prepare_dirs(clusters,num_k,kMeansDir,'UNinv')
         
