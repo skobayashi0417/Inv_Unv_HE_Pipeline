@@ -90,7 +90,7 @@ def scale_WSI(INPUT_WSI_DIR,SCALED_WSI_DIR, BASE_DIR, PATCH_SIZE = 224, WSI_EXTE
     
     orig_WSIs = [w for w in os.listdir(INPUT_WSI_DIR) if str(w).endswith(WSI_EXTENSION)]
     
-    orig_WSIs = [a for a in orig_WSIs if a =='14big.tif' or a=='322big.tif']
+    orig_WSIs = [a for a in orig_WSIs]
     print(orig_WSIs)
     
     tot_num = len(orig_WSIs)
